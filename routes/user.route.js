@@ -1,5 +1,5 @@
 import express from "express";
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
 import { getUserByEmail, getUserDetails } from "../controllers/user.controller.js";
 import { User, generateToken } from "../models/user.model.js";
 
@@ -14,8 +14,8 @@ router.post("/signup", async (req, res) => {
     }
 
     // Generate Hashed Password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    const salt = await bcryptjs.genSalt(10)
+    const hashedPassword = await bcryptjs.hash(req.body.password, salt);
 
     // Storing the user data in db
     user = await new User({
@@ -45,7 +45,7 @@ router.post("/login", async (req, res) => {
     }
 
     // Validating the password
-    const validatePassword = await bcrypt.compare(
+    const validatePassword = await bcryptjs.compare(
       req.body.password,
       user.password
     );
