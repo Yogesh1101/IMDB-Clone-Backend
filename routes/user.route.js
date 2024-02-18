@@ -1,6 +1,6 @@
 import express from "express";
 import bcryptjs from "bcryptjs";
-import { getUserByEmail, getUserDetails } from "../controllers/user.controller.js";
+import { getUserByEmail } from "../controllers/user.controller.js";
 import { User, generateToken } from "../models/user.model.js";
 
 const router = express.Router();
@@ -14,7 +14,7 @@ router.post("/signup", async (req, res) => {
     }
 
     // Generate Hashed Password
-    const salt = await bcryptjs.genSalt(10)
+    const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(req.body.password, salt);
 
     // Storing the user data in db
@@ -65,7 +65,5 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error..." });
   }
 });
-
-
 
 export const userRouter = router;
