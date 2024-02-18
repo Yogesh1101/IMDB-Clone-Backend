@@ -5,6 +5,8 @@ import { dataBaseConnection } from "./db.js";
 import { userRouter } from "./routes/user.route.js";
 import { castRouter } from "./routes/cast.route.js";
 import { movieRouter } from "./routes/movie.route.js";
+import { isAuthenticated } from "./controllers/auth.controller.js";
+import { userDetailRouter } from "./routes/userDetail.route.js";
 
 dotenv.config();
 
@@ -25,6 +27,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRouter);
+app.use("/detail", isAuthenticated, userDetailRouter)
 app.use("/cast", castRouter);
 app.use("/movie", movieRouter);
 

@@ -8,6 +8,4 @@ export function getUserById(requestID) {
   return User.findById(requestID).select("_id username email");
 }
 
-export function getUserDetails(req) {
-  return req.user;
-}
+
