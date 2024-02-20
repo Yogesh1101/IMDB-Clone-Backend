@@ -1,7 +1,7 @@
 import { Movie } from "../models/movie.model.js";
 
 export function getAllMovies() {
-  return Movie.find({}).populate("movieProducer").populate("movieActors");
+  return Movie.find({}).populate("producer").populate("actors");
 }
 
 export function postNewMovie(req) {
