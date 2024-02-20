@@ -41,6 +41,7 @@ router.get("/producers", async (req, res) => {
 router.post("/create", async (req, res) => {
   try {
     const newCast = await postNewCast(req);
+    console.log(req.body);
     if (!newCast) {
       return res
         .status(400)

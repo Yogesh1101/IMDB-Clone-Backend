@@ -2,32 +2,32 @@ import mongoose from "mongoose";
 
 const movieSchema = new mongoose.Schema(
   {
-    movieName: {
+    name: {
       type: String,
       required: true,
     },
-    movieYearOfRelease: {
+    yearOfRelease: {
       type: String,
       required: true,
     },
-    moviePlot: {
+    plot: {
       type: String,
       required: true,
     },
-    moviePoster: {
+    poster: {
       type: String,
       default:
         "https://e7.pngegg.com/pngimages/229/405/png-clipart-art-film-clapperboard-cinema-movie-theatre-miscellaneous-text-thumbnail.png",
     },
-    movieDirector: {
+    director: {
       type: String,
       required: true,
     },
-    movieProducer: {
+    producer: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "cast",
     },
-    movieActors: [
+    actors: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "cast",
